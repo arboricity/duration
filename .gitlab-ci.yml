@@ -1,0 +1,11 @@
+image: elixir:alpine
+
+variables:
+  MIX_ENV: "test"
+
+before_script:
+  - mix deps.get
+
+mix:
+  script:
+  - mix test

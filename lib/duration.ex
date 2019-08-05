@@ -1,8 +1,8 @@
 defmodule Duration do
   @type t :: %__MODULE__{
           years: non_neg_integer,
-          months: non_neg_integer,
-          days: non_neg_integer,
+          months: pos_integer,
+          days: pos_integer,
           hours: non_neg_integer,
           minutes: non_neg_integer,
           seconds: non_neg_integer
@@ -20,27 +20,66 @@ defmodule Duration do
   Documentation for Duration.
   """
 
+  def new(%Duration{} = val), do: {:ok, val}
+  def new(val) when is_binary(val) do
+    parse(val)
+  end
+  def new(opts) when is_list(opts) do
+    params = opts |> Keyword.take([:years, :months, :days, :hours, :minutes, :seconds])
+    params = params |> Enum.map(fn {k, v} -> {k, abs(v)} end)
+    if params == opts do
+      {:ok, struct(__MODULE__, params)}
+    else
+      {:error, :wrong_options}
+    end
+  end
+
   @doc """
   Hello world.
 
   ## Examples
 
-      iex> Duration.parse_duration("PT3S")
+      iex> Duration.parse("PT3S")
       {:ok, %Duration{seconds: 3}}
 
   """
-  def parse_duration(value) when is_binary(value) do
+  def parse(value) when is_binary(value) do
     case Parser.parse(value) do
       {:ok, params, _, _, _, _} ->
         {:ok, struct(__MODULE__, params)}
-
-      z ->
-        {:error, z}
-    end
+      _ ->
+        {:error, :invalid_duration}
+    ends
   end
 
-  def parse_duration(_) do
+  def parse(_) do
     {:error}
+  end
+
+  @doc """
+  Converts Duration into Timex.shift_options, wich can be used with Timex
+
+  ## Examples
+
+  Go forward
+
+      iex > Duration.to_timex_options(%Duration{years: 1})
+      {:ok, [days: 0, hours: 0, minutes: 0, months: 0, seconds: 0, years: 1]}
+
+  Go forward
+
+      iex > Duration.to_timex_options(%Duration{years: 1}; :backward)
+      {:ok, [days: 0, hours: 0, minutes: 0, months: 0, seconds: 0, years: -1]}
+
+  """
+  def to_timex_options(%Duration{} = duration, direction \\ :forward) when direction in [:forward, :backward] do
+    options =
+      case direction do
+        :forward -> Map.from_struct(duration) |> Map.to_list
+        :backward -> Map.from_struct(duration) |> Enum.map(fn {k, v} -> {k, v * -1} end)
+      end
+
+    {:ok, options |> Enum.filter(fn {_, v} -> v != 0 end)}
   end
 end
 

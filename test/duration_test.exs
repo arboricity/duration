@@ -3,15 +3,15 @@ defmodule DurationTest do
   doctest Duration
 
   test "parse durations" do
-    assert Duration.parse_duration("PT3S") == {:ok, %Duration{seconds: 3}}
-    assert Duration.parse_duration("P3M") == {:ok, %Duration{months: 3}}
-    assert Duration.parse_duration("PT3M") == {:ok, %Duration{minutes: 3}}
+    assert Duration.parse("PT3S") == {:ok, %Duration{seconds: 3}}
+    assert Duration.parse("P3M") == {:ok, %Duration{months: 3}}
+    assert Duration.parse("PT3M") == {:ok, %Duration{minutes: 3}}
 
-    assert Duration.parse_duration("P12341223T235759") ==
+    assert Duration.parse("P12341223T235759") ==
              {:ok,
               %Duration{years: 1234, months: 12, days: 23, hours: 23, minutes: 57, seconds: 59}}
 
-    assert Duration.parse_duration("P1234-12-23T23:57:59") ==
+    assert Duration.parse("P1234-12-23T23:57:59") ==
              {:ok,
               %Duration{years: 1234, months: 12, days: 23, hours: 23, minutes: 57, seconds: 59}}
   end
@@ -23,11 +23,17 @@ defmodule DurationTest do
   end
 
   test "errors" do
-    assert {:error, _} = Duration.parse_duration("")
-    assert {:error, _} = Duration.parse_duration("P12341331T246060")
-    assert {:error, _} = Duration.parse_duration("P12341232T246060")
-    assert {:error, _} = Duration.parse_duration("P12341231T256060")
-    assert {:error, _} = Duration.parse_duration("P12341231T246160")
-    assert {:error, _} = Duration.parse_duration("P12341231T246061")
+    assert {:error, _} = Duration.parse("")
+    assert {:error, _} = Duration.parse("P12341331T246060")
+    assert {:error, _} = Duration.parse("P12341232T246060")
+    assert {:error, _} = Duration.parse("P12341231T256060")
+    assert {:error, _} = Duration.parse("P12341231T246160")
+    assert {:error, _} = Duration.parse("P12341231T246061")
+  end
+
+  test "Timex.integration" do
+    {:ok, duration} = Duration.new("PT1S")
+    assert {:ok, [seconds: 1]} = Duration.to_timex_options(duration, :forward)
+    assert {:ok, [seconds: -1]} = Duration.to_timex_options(duration, :backward)
   end
 end
