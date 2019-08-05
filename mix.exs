@@ -40,7 +40,7 @@ defmodule Duration.MixProject do
     [
       name: "duration",
       licenses: ["BSD-3-Clause"],
-      # links: %{"GitHub" => "https://github.com/elixir-ecto/postgrex"}
+      links: %{"Errorist" => "https://lab.errorist.xyz/elixir/duration"}
     ]
   end
 
