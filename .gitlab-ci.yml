@@ -2,7 +2,8 @@ variables:
   MIX_ENV: "test"
 
 before_script:
-  - mix deps.get
+  - mix local.hex --force
+  - mix deps.get --only test
 
 mix:
   tags: [elixir]
