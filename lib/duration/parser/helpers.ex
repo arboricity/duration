@@ -1,5 +1,6 @@
 if Code.ensure_loaded?(NimbleParsec) do
   defmodule Duration.Parser.Helpers do
+    @moduledoc false
     import NimbleParsec
 
     def year do
