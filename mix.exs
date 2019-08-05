@@ -9,15 +9,19 @@ defmodule Duration.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
 
-    # Docs
-    name: "Duration",
-    source_url: "https://lab.errorist.xyz/elixir/duration",
-    homepage_url: "https://elixir.errorist.io/duration",
-    docs: [
-      main: "Duration", # The main page in the docs
-      # logo: "path/to/logo.png",
-      extras: ["README.md"]
-    ]
+      # Docs
+      name: "Duration",
+      source_url: "https://lab.errorist.xyz/elixir/duration",
+      homepage_url: "http://elixir.errorist.io/duration",
+      docs: [
+        main: "Duration", # The main page in the docs
+        # logo: "path/to/logo.png",
+        extras: ["README.md"]
+      ],
+      groups_for_extras: [
+        # "Introduction": Path.wildcard("guides/introduction/*.md"),
+        "Advanced": Path.wildcard("guides/advanced/*.md")
+      ]
 
     ]
   end
