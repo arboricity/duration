@@ -16,12 +16,17 @@ defmodule Duration.MixProject do
       docs: [
         main: "Duration", # The main page in the docs
         # logo: "path/to/logo.png",
-        extras: ["README.md"]
+        extras: [
+          "guides/advanced/timex.md",
+        ],
+        groups_for_extras: [
+          # "Introduction": Path.wildcard("guides/introduction/*.md"),
+          "Advanced": Path.wildcard("guides/advanced/*.md")
+        ]
       ],
-      groups_for_extras: [
-        # "Introduction": Path.wildcard("guides/introduction/*.md"),
-        "Advanced": Path.wildcard("guides/advanced/*.md")
-      ]
+      # extras: [
+      #   "guides/introduction/foo.md",
+
 
     ]
   end
