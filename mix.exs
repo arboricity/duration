@@ -45,14 +45,13 @@ defmodule Duration.MixProject do
   end
 
   defp docs do
-    docs: [
-      main: "Duration", # The main page in the docs
+    [
+      # main: "Duration", # The main page in the docs
       # logo: "path/to/logo.png",
       extras: [
         "guides/advanced/timex.md",
       ],
       groups_for_extras: [
-        # "Introduction": Path.wildcard("guides/introduction/*.md"),
         "Advanced": Path.wildcard("guides/advanced/*.md")
       ]
     ]
