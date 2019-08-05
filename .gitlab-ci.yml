@@ -1,18 +1,17 @@
 variables:
   MIX_ENV: "test"
 
-tags:
-  - elixir
-
-  before_script:
+before_script:
   - mix local.hex --force
   - mix deps.get --only test
 
 test:
+  tags: [elixir]
   script:
   - mix test
 
 pages:
+  tags: [elixir]
   script:
   - mix docs --output public
   artifacts:
