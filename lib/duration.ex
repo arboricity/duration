@@ -17,7 +17,7 @@ defmodule Duration do
   alias Duration.Parser
 
   @moduledoc """
-  Convenient module to play with ISO 8601:2004 durations and Timex.shift.
+  Convenient module to play with ISO 8601:2004 durations and `Timex.shift/2`.
   """
 
   @doc """
@@ -64,7 +64,7 @@ defmodule Duration do
   end
 
   @doc """
-  Converts a `Duration.t` into `Timex.shift_options`, wich can be used with `Timex.shift`.
+  Converts a `Duration.t` into `Timex.shift_options`, wich can be used with `Timex.shift/2`.
 
   ## Examples
 
@@ -73,7 +73,7 @@ defmodule Duration do
       iex > Duration.to_timex_options(%Duration{years: 1})
       {:ok, [days: 0, hours: 0, minutes: 0, months: 0, seconds: 0, years: 1]}
 
-  Go forward
+  Go backward
 
       iex > Duration.to_timex_options(%Duration{years: 1}; :backward)
       {:ok, [days: 0, hours: 0, minutes: 0, months: 0, seconds: 0, years: -1]}
