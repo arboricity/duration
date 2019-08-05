@@ -17,9 +17,15 @@ defmodule Duration do
   alias Duration.Parser
 
   @moduledoc """
-  Documentation for Duration.
+  Convenient module to play with ISO 8601:2004 durations and Timex.shift.
   """
 
+  @doc """
+  Loads a `Duration.t`.
+  """
+  @spec new(Duration.t) :: {:ok, Duration.t} | {:error, atom}
+  @spec new(String.t) :: {:ok, Duration.t} | {:error, atom}
+  @spec new(list) :: {:ok, Duration.t} | {:error, atom}
   def new(%Duration{} = val), do: {:ok, val}
   def new(val) when is_binary(val) do
     parse(val)
@@ -35,7 +41,7 @@ defmodule Duration do
   end
 
   @doc """
-  Hello world.
+  Parse a duration string to a `Duration.t`.
 
   ## Examples
 
@@ -43,6 +49,7 @@ defmodule Duration do
       {:ok, %Duration{seconds: 3}}
 
   """
+  @spec parse(String.t) :: {:ok, Duration.t} | {:error, atom}
   def parse(value) when is_binary(value) do
     case Parser.parse(value) do
       {:ok, params, _, _, _, _} ->
@@ -53,11 +60,11 @@ defmodule Duration do
   end
 
   def parse(_) do
-    {:error}
+    {:error, :parse_error}
   end
 
   @doc """
-  Converts Duration into Timex.shift_options, wich can be used with Timex
+  Converts a `Duration.t` into `Timex.shift_options`, wich can be used with `Timex.shift`.
 
   ## Examples
 
