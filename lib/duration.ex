@@ -49,7 +49,7 @@ defmodule Duration do
         {:ok, struct(__MODULE__, params)}
       _ ->
         {:error, :invalid_duration}
-    ends
+    end
   end
 
   def parse(_) do
