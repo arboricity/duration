@@ -27,8 +27,8 @@ defmodule Duration.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:nimble_parsec, "~> 0.5.0", only: [:dev, :test]},
-      {:ex_doc, "~> 0.21", only: [:dev, :test], runtime: false}
+      {:nimble_parsec, "~> 0.6", only: [:dev, :test]},
+      {:ex_doc, "~> 0.22", only: [:dev, :test], runtime: false}
     ]
   end
 

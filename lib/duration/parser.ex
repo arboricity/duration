@@ -1,5 +1,5 @@
 # Generated from lib/duration/parser.ex.exs, do not edit.
-# Generated at 2019-08-04 17:10:17Z.
+# Generated at 2020-06-03 11:10:25Z.
 
 defmodule Duration.Parser do
   @moduledoc false
@@ -9,7 +9,7 @@ defmodule Duration.Parser do
 
   Returns `{:ok, [token], rest, context, position, byte_offset}` or
   `{:error, reason, rest, context, line, byte_offset}` where `position`
-  describes the location of the parse (start position) as {line, column_on_line}.
+  describes the location of the parse (start position) as `{line, column_on_line}`.
 
   ## Options
 
@@ -68,7 +68,7 @@ defmodule Duration.Parser do
       {:ok, acc, rest, context, line, offset} ->
         parse__6(rest, acc, stack, context, line, offset)
 
-      {:error, _, _, _, _, _} = error ->
+      {:error, _, _, _, _, _} ->
         parse__4(rest, acc, stack, context, line, offset)
     end
   end
@@ -86,7 +86,7 @@ defmodule Duration.Parser do
       {:ok, acc, rest, context, line, offset} ->
         parse__9(rest, acc, stack, context, line, offset)
 
-      {:error, _, _, _, _, _} = error ->
+      {:error, _, _, _, _, _} ->
         parse__7(rest, acc, stack, context, line, offset)
     end
   end
@@ -104,7 +104,7 @@ defmodule Duration.Parser do
 
   Returns `{:ok, [token], rest, context, position, byte_offset}` or
   `{:error, reason, rest, context, line, byte_offset}` where `position`
-  describes the location of the datetime_3 (start position) as {line, column_on_line}.
+  describes the location of the datetime_3 (start position) as `{line, column_on_line}`.
 
   ## Options
 
@@ -179,7 +179,7 @@ defmodule Duration.Parser do
       {:ok, acc, rest, context, line, offset} ->
         datetime_3__8(rest, acc, stack, context, line, offset)
 
-      {:error, _, _, _, _, _} = error ->
+      {:error, _, _, _, _, _} ->
         datetime_3__5(rest, acc, stack, context, line, offset)
     end
   end
@@ -205,7 +205,7 @@ defmodule Duration.Parser do
 
   Returns `{:ok, [token], rest, context, position, byte_offset}` or
   `{:error, reason, rest, context, line, byte_offset}` where `position`
-  describes the location of the datetime_2 (start position) as {line, column_on_line}.
+  describes the location of the datetime_2 (start position) as `{line, column_on_line}`.
 
   ## Options
 
@@ -290,7 +290,7 @@ defmodule Duration.Parser do
 
   Returns `{:ok, [token], rest, context, position, byte_offset}` or
   `{:error, reason, rest, context, line, byte_offset}` where `position`
-  describes the location of the datetime_1 (start position) as {line, column_on_line}.
+  describes the location of the datetime_1 (start position) as `{line, column_on_line}`.
 
   ## Options
 
@@ -375,7 +375,7 @@ defmodule Duration.Parser do
 
   Returns `{:ok, [token], rest, context, position, byte_offset}` or
   `{:error, reason, rest, context, line, byte_offset}` where `position`
-  describes the location of the time_3 (start position) as {line, column_on_line}.
+  describes the location of the time_3 (start position) as `{line, column_on_line}`.
 
   ## Options
 
@@ -432,7 +432,7 @@ defmodule Duration.Parser do
     time_3__7(rest, [x0 - 48] ++ acc, stack, context, comb__line, comb__offset + 1)
   end
 
-  defp time_3__6(rest, acc, stack, context, line, offset) do
+  defp time_3__6(rest, _acc, stack, context, line, offset) do
     [_, acc | stack] = stack
     time_3__3(rest, acc, stack, context, line, offset)
   end
@@ -451,6 +451,8 @@ defmodule Duration.Parser do
   end
 
   defp time_3__8(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     time_3__10(
       rest,
       (
@@ -468,7 +470,7 @@ defmodule Duration.Parser do
     time_3__11(rest, acc, stack, context, line, offset)
   end
 
-  defp time_3__10(rest, acc, stack, context, line, offset) do
+  defp time_3__10(rest, _acc, stack, context, line, offset) do
     [acc | stack] = stack
     time_3__3(rest, acc, stack, context, line, offset)
   end
@@ -477,12 +479,14 @@ defmodule Duration.Parser do
     time_3__12(rest, [] ++ acc, stack, context, comb__line, comb__offset + 1)
   end
 
-  defp time_3__11(rest, acc, stack, context, line, offset) do
+  defp time_3__11(rest, _acc, stack, context, line, offset) do
     [acc | stack] = stack
     time_3__3(rest, acc, stack, context, line, offset)
   end
 
   defp time_3__12(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     time_3__13(
       rest,
       [
@@ -531,7 +535,7 @@ defmodule Duration.Parser do
     time_3__20(rest, [x0 - 48] ++ acc, stack, context, comb__line, comb__offset + 1)
   end
 
-  defp time_3__19(rest, acc, stack, context, line, offset) do
+  defp time_3__19(rest, _acc, stack, context, line, offset) do
     [_, acc | stack] = stack
     time_3__16(rest, acc, stack, context, line, offset)
   end
@@ -550,6 +554,8 @@ defmodule Duration.Parser do
   end
 
   defp time_3__21(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     time_3__23(
       rest,
       (
@@ -567,7 +573,7 @@ defmodule Duration.Parser do
     time_3__24(rest, acc, stack, context, line, offset)
   end
 
-  defp time_3__23(rest, acc, stack, context, line, offset) do
+  defp time_3__23(rest, _acc, stack, context, line, offset) do
     [acc | stack] = stack
     time_3__16(rest, acc, stack, context, line, offset)
   end
@@ -576,12 +582,14 @@ defmodule Duration.Parser do
     time_3__25(rest, [] ++ acc, stack, context, comb__line, comb__offset + 1)
   end
 
-  defp time_3__24(rest, acc, stack, context, line, offset) do
+  defp time_3__24(rest, _acc, stack, context, line, offset) do
     [acc | stack] = stack
     time_3__16(rest, acc, stack, context, line, offset)
   end
 
   defp time_3__25(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     time_3__26(
       rest,
       [
@@ -630,7 +638,7 @@ defmodule Duration.Parser do
     time_3__33(rest, [x0 - 48] ++ acc, stack, context, comb__line, comb__offset + 1)
   end
 
-  defp time_3__32(rest, acc, stack, context, line, offset) do
+  defp time_3__32(rest, _acc, stack, context, line, offset) do
     [_, acc | stack] = stack
     time_3__29(rest, acc, stack, context, line, offset)
   end
@@ -649,6 +657,8 @@ defmodule Duration.Parser do
   end
 
   defp time_3__34(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     time_3__36(
       rest,
       (
@@ -666,7 +676,7 @@ defmodule Duration.Parser do
     time_3__37(rest, acc, stack, context, line, offset)
   end
 
-  defp time_3__36(rest, acc, stack, context, line, offset) do
+  defp time_3__36(rest, _acc, stack, context, line, offset) do
     [acc | stack] = stack
     time_3__29(rest, acc, stack, context, line, offset)
   end
@@ -675,12 +685,14 @@ defmodule Duration.Parser do
     time_3__38(rest, [] ++ acc, stack, context, comb__line, comb__offset + 1)
   end
 
-  defp time_3__37(rest, acc, stack, context, line, offset) do
+  defp time_3__37(rest, _acc, stack, context, line, offset) do
     [acc | stack] = stack
     time_3__29(rest, acc, stack, context, line, offset)
   end
 
   defp time_3__38(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     time_3__39(
       rest,
       [
@@ -713,7 +725,7 @@ defmodule Duration.Parser do
 
   Returns `{:ok, [token], rest, context, position, byte_offset}` or
   `{:error, reason, rest, context, line, byte_offset}` where `position`
-  describes the location of the time_2 (start position) as {line, column_on_line}.
+  describes the location of the time_2 (start position) as `{line, column_on_line}`.
 
   ## Options
 
@@ -787,6 +799,8 @@ defmodule Duration.Parser do
   end
 
   defp time_2__4(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     time_2__5(
       rest,
       [
@@ -856,6 +870,8 @@ defmodule Duration.Parser do
   end
 
   defp time_2__10(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     time_2__11(
       rest,
       [
@@ -925,6 +941,8 @@ defmodule Duration.Parser do
   end
 
   defp time_2__16(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     time_2__17(
       rest,
       [
@@ -953,7 +971,7 @@ defmodule Duration.Parser do
 
   Returns `{:ok, [token], rest, context, position, byte_offset}` or
   `{:error, reason, rest, context, line, byte_offset}` where `position`
-  describes the location of the time_1 (start position) as {line, column_on_line}.
+  describes the location of the time_1 (start position) as `{line, column_on_line}`.
 
   ## Options
 
@@ -1027,6 +1045,8 @@ defmodule Duration.Parser do
   end
 
   defp time_1__4(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     time_1__5(
       rest,
       [
@@ -1088,6 +1108,8 @@ defmodule Duration.Parser do
   end
 
   defp time_1__9(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     time_1__10(
       rest,
       [
@@ -1149,6 +1171,8 @@ defmodule Duration.Parser do
   end
 
   defp time_1__14(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     time_1__15(
       rest,
       [
@@ -1177,7 +1201,7 @@ defmodule Duration.Parser do
 
   Returns `{:ok, [token], rest, context, position, byte_offset}` or
   `{:error, reason, rest, context, line, byte_offset}` where `position`
-  describes the location of the date_3 (start position) as {line, column_on_line}.
+  describes the location of the date_3 (start position) as `{line, column_on_line}`.
 
   ## Options
 
@@ -1234,7 +1258,7 @@ defmodule Duration.Parser do
     date_3__7(rest, [x0 - 48] ++ acc, stack, context, comb__line, comb__offset + 1)
   end
 
-  defp date_3__6(rest, acc, stack, context, line, offset) do
+  defp date_3__6(rest, _acc, stack, context, line, offset) do
     [_, acc | stack] = stack
     date_3__3(rest, acc, stack, context, line, offset)
   end
@@ -1253,6 +1277,8 @@ defmodule Duration.Parser do
   end
 
   defp date_3__8(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     date_3__10(
       rest,
       (
@@ -1270,7 +1296,7 @@ defmodule Duration.Parser do
     date_3__11(rest, acc, stack, context, line, offset)
   end
 
-  defp date_3__10(rest, acc, stack, context, line, offset) do
+  defp date_3__10(rest, _acc, stack, context, line, offset) do
     [acc | stack] = stack
     date_3__3(rest, acc, stack, context, line, offset)
   end
@@ -1279,12 +1305,14 @@ defmodule Duration.Parser do
     date_3__12(rest, [] ++ acc, stack, context, comb__line, comb__offset + 1)
   end
 
-  defp date_3__11(rest, acc, stack, context, line, offset) do
+  defp date_3__11(rest, _acc, stack, context, line, offset) do
     [acc | stack] = stack
     date_3__3(rest, acc, stack, context, line, offset)
   end
 
   defp date_3__12(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     date_3__13(
       rest,
       [
@@ -1333,7 +1361,7 @@ defmodule Duration.Parser do
     date_3__20(rest, [x0 - 48] ++ acc, stack, context, comb__line, comb__offset + 1)
   end
 
-  defp date_3__19(rest, acc, stack, context, line, offset) do
+  defp date_3__19(rest, _acc, stack, context, line, offset) do
     [_, acc | stack] = stack
     date_3__16(rest, acc, stack, context, line, offset)
   end
@@ -1352,6 +1380,8 @@ defmodule Duration.Parser do
   end
 
   defp date_3__21(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     date_3__23(
       rest,
       (
@@ -1369,7 +1399,7 @@ defmodule Duration.Parser do
     date_3__24(rest, acc, stack, context, line, offset)
   end
 
-  defp date_3__23(rest, acc, stack, context, line, offset) do
+  defp date_3__23(rest, _acc, stack, context, line, offset) do
     [acc | stack] = stack
     date_3__16(rest, acc, stack, context, line, offset)
   end
@@ -1378,12 +1408,14 @@ defmodule Duration.Parser do
     date_3__25(rest, [] ++ acc, stack, context, comb__line, comb__offset + 1)
   end
 
-  defp date_3__24(rest, acc, stack, context, line, offset) do
+  defp date_3__24(rest, _acc, stack, context, line, offset) do
     [acc | stack] = stack
     date_3__16(rest, acc, stack, context, line, offset)
   end
 
   defp date_3__25(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     date_3__26(
       rest,
       [
@@ -1432,7 +1464,7 @@ defmodule Duration.Parser do
     date_3__33(rest, [x0 - 48] ++ acc, stack, context, comb__line, comb__offset + 1)
   end
 
-  defp date_3__32(rest, acc, stack, context, line, offset) do
+  defp date_3__32(rest, _acc, stack, context, line, offset) do
     [_, acc | stack] = stack
     date_3__29(rest, acc, stack, context, line, offset)
   end
@@ -1451,6 +1483,8 @@ defmodule Duration.Parser do
   end
 
   defp date_3__34(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     date_3__36(
       rest,
       (
@@ -1468,7 +1502,7 @@ defmodule Duration.Parser do
     date_3__37(rest, acc, stack, context, line, offset)
   end
 
-  defp date_3__36(rest, acc, stack, context, line, offset) do
+  defp date_3__36(rest, _acc, stack, context, line, offset) do
     [acc | stack] = stack
     date_3__29(rest, acc, stack, context, line, offset)
   end
@@ -1477,12 +1511,14 @@ defmodule Duration.Parser do
     date_3__38(rest, [] ++ acc, stack, context, comb__line, comb__offset + 1)
   end
 
-  defp date_3__37(rest, acc, stack, context, line, offset) do
+  defp date_3__37(rest, _acc, stack, context, line, offset) do
     [acc | stack] = stack
     date_3__29(rest, acc, stack, context, line, offset)
   end
 
   defp date_3__38(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     date_3__39(
       rest,
       [
@@ -1515,7 +1551,7 @@ defmodule Duration.Parser do
 
   Returns `{:ok, [token], rest, context, position, byte_offset}` or
   `{:error, reason, rest, context, line, byte_offset}` where `position`
-  describes the location of the date_2 (start position) as {line, column_on_line}.
+  describes the location of the date_2 (start position) as `{line, column_on_line}`.
 
   ## Options
 
@@ -1613,6 +1649,8 @@ defmodule Duration.Parser do
   end
 
   defp date_2__5(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     date_2__6(
       rest,
       [
@@ -1682,6 +1720,8 @@ defmodule Duration.Parser do
   end
 
   defp date_2__11(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     date_2__12(
       rest,
       [
@@ -1710,7 +1750,7 @@ defmodule Duration.Parser do
 
   Returns `{:ok, [token], rest, context, position, byte_offset}` or
   `{:error, reason, rest, context, line, byte_offset}` where `position`
-  describes the location of the date_1 (start position) as {line, column_on_line}.
+  describes the location of the date_1 (start position) as `{line, column_on_line}`.
 
   ## Options
 
@@ -1808,6 +1848,8 @@ defmodule Duration.Parser do
   end
 
   defp date_1__5(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     date_1__6(
       rest,
       [
@@ -1869,6 +1911,8 @@ defmodule Duration.Parser do
   end
 
   defp date_1__10(rest, user_acc, [acc | stack], context, line, offset) do
+    _ = user_acc
+
     date_1__11(
       rest,
       [

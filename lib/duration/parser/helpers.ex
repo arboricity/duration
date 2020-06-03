@@ -9,7 +9,7 @@ if Code.ensure_loaded?(NimbleParsec) do
       |> label("4 digits")
     end
 
-    def year(combinator), do: concat(combinator, year)
+    def year(combinator), do: concat(combinator, year())
 
     def month do
       integer(2)
@@ -18,7 +18,7 @@ if Code.ensure_loaded?(NimbleParsec) do
       |> label("2 digits")
     end
 
-    def month(combinator), do: concat(combinator, month)
+    def month(combinator), do: concat(combinator, month())
 
     def day do
       integer(2)
@@ -27,7 +27,7 @@ if Code.ensure_loaded?(NimbleParsec) do
       |> label("2 digits")
     end
 
-    def day(combinator), do: concat(combinator, day)
+    def day(combinator), do: concat(combinator, day())
 
     def hour do
       integer(2)
@@ -36,7 +36,7 @@ if Code.ensure_loaded?(NimbleParsec) do
       |> label("2 digits")
     end
 
-    def hour(combinator), do: concat(combinator, hour)
+    def hour(combinator), do: concat(combinator, hour())
 
     def minute do
       integer(2)
@@ -45,7 +45,7 @@ if Code.ensure_loaded?(NimbleParsec) do
       |> label("2 digits")
     end
 
-    def minute(combinator), do: concat(combinator, minute)
+    def minute(combinator), do: concat(combinator, minute())
 
     def second do
       integer(2)
@@ -54,21 +54,21 @@ if Code.ensure_loaded?(NimbleParsec) do
       |> label("2 digits")
     end
 
-    def second(combinator), do: concat(combinator, second)
+    def second(combinator), do: concat(combinator, second())
 
     def dash do
       string("-")
       |> label("dash")
     end
 
-    def dash(combinator), do: concat(combinator, dash)
+    def dash(combinator), do: concat(combinator, dash())
 
     def colon do
       string(":")
       |> label("colon")
     end
 
-    def colon(combinator), do: concat(combinator, colon)
+    def colon(combinator), do: concat(combinator, colon())
 
     def part(identifier, name) do
       integer(min: 1)
@@ -84,12 +84,12 @@ if Code.ensure_loaded?(NimbleParsec) do
       ignore(string("P"))
     end
 
-    def marker_p(combinator), do: concat(combinator, marker_p)
+    def marker_p(combinator), do: concat(combinator, marker_p())
 
     def marker_t do
       ignore(string("T"))
     end
 
-    def marker_t(combinator), do: concat(combinator, marker_t)
+    def marker_t(combinator), do: concat(combinator, marker_t())
   end
 end
