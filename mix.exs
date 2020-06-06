@@ -49,10 +49,10 @@ defmodule Duration.MixProject do
       # main: "Duration", # The main page in the docs
       # logo: "path/to/logo.png",
       extras: [
-        "guides/advanced/timex.md",
+        "guides/advanced/timex.md"
       ],
       groups_for_extras: [
-        "Advanced": Path.wildcard("guides/advanced/*.md")
+        Advanced: Path.wildcard("guides/advanced/*.md")
       ]
     ]
   end

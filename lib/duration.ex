@@ -23,16 +23,19 @@ defmodule Duration do
   @doc """
   Loads a `Duration.t`.
   """
-  @spec new(Duration.t) :: {:ok, Duration.t} | {:error, atom}
-  @spec new(String.t) :: {:ok, Duration.t} | {:error, atom}
-  @spec new(list) :: {:ok, Duration.t} | {:error, atom}
+  @spec new(Duration.t()) :: {:ok, Duration.t()} | {:error, atom}
+  @spec new(String.t()) :: {:ok, Duration.t()} | {:error, atom}
+  @spec new(list) :: {:ok, Duration.t()} | {:error, atom}
   def new(%Duration{} = val), do: {:ok, val}
+
   def new(val) when is_binary(val) do
     parse(val)
   end
+
   def new(opts) when is_list(opts) do
     params = opts |> Keyword.take([:years, :months, :days, :hours, :minutes, :seconds])
     params = params |> Enum.map(fn {k, v} -> {k, abs(v)} end)
+
     if params == opts do
       {:ok, struct(__MODULE__, params)}
     else
@@ -49,11 +52,12 @@ defmodule Duration do
       {:ok, %Duration{seconds: 3}}
 
   """
-  @spec parse(String.t) :: {:ok, Duration.t} | {:error, atom}
+  @spec parse(String.t()) :: {:ok, Duration.t()} | {:error, atom}
   def parse(value) when is_binary(value) do
     case Parser.parse(value) do
       {:ok, params, _, _, _, _} ->
         {:ok, struct(__MODULE__, params)}
+
       _ ->
         {:error, :invalid_duration}
     end
@@ -79,10 +83,11 @@ defmodule Duration do
       {:ok, [days: 0, hours: 0, minutes: 0, months: 0, seconds: 0, years: -1]}
 
   """
-  def to_timex_options(%Duration{} = duration, direction \\ :forward) when direction in [:forward, :backward] do
+  def to_timex_options(%Duration{} = duration, direction \\ :forward)
+      when direction in [:forward, :backward] do
     options =
       case direction do
-        :forward -> Map.from_struct(duration) |> Map.to_list
+        :forward -> Map.from_struct(duration) |> Map.to_list()
         :backward -> Map.from_struct(duration) |> Enum.map(fn {k, v} -> {k, v * -1} end)
       end
 
@@ -96,12 +101,15 @@ defimpl String.Chars, for: Duration do
     output = output <> if value.years > 0, do: "#{value.years}Y", else: ""
     output = output <> if value.months > 0, do: "#{value.months}M", else: ""
     output = output <> if value.days > 0, do: "#{value.days}D", else: ""
-    output = output <> if (value.hours || value.minutes || value.seconds) > 0, do: "T", else: ""
+
+    output =
+      output <> if value.hours > 0 || value.minutes > 0 || value.seconds > 0, do: "T", else: ""
+
     output = output <> if value.hours > 0, do: "#{value.hours}H", else: ""
     output = output <> if value.minutes > 0, do: "#{value.minutes}M", else: ""
     output = output <> if value.seconds > 0, do: "#{value.seconds}S", else: ""
-    output = if output in ["P", "PT"], do: "PT0S", else: output
-    output
+
+    if output in ["P", "PT"], do: "PT0S", else: output
   end
 end
 

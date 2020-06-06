@@ -19,7 +19,17 @@ defmodule DurationTest do
   test "string protocol" do
     assert to_string(%Duration{}) == "PT0S"
     assert to_string(%Duration{years: 1}) == "P1Y"
-    assert to_string(%Duration{years: 1, seconds: 12}) == "P1Y12S"
+    assert to_string(%Duration{months: 1}) == "P1M"
+    assert to_string(%Duration{years: 1, seconds: 12}) == "P1YT12S"
+    assert to_string(%Duration{years: 1, months: 2, days: 3}) == "P1Y2M3D"
+
+    assert to_string(%Duration{years: 1, months: 2, days: 3, hours: 4, minutes: 5, seconds: 6}) ==
+             "P1Y2M3DT4H5M6S"
+
+    assert to_string(%Duration{minutes: 1}) == "PT1M"
+    assert to_string(%Duration{hours: 1, minutes: 2, seconds: 3}) == "PT1H2M3S"
+    assert to_string(%Duration{hours: 0, minutes: 2, seconds: 3}) == "PT2M3S"
+    assert to_string(%Duration{hours: 0, minutes: 0, seconds: 3}) == "PT3S"
   end
 
   test "errors" do
