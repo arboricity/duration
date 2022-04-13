@@ -1,8 +1,8 @@
 defmodule Duration do
   @type t :: %__MODULE__{
           years: non_neg_integer,
-          months: pos_integer,
-          days: pos_integer,
+          months: non_neg_integer,
+          days: non_neg_integer,
           hours: non_neg_integer,
           minutes: non_neg_integer,
           seconds: non_neg_integer
